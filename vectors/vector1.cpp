@@ -7,9 +7,10 @@ using namespace std;
 
 int lastOccurence(vector<int> &v,int x){
     int index=-1;
-    for(int i=0;i<v.size();i++){
+    for(int i=v.size();i>=0;i--){
         if(v[i]==x){
             index=i;
+            break;
         }
     }
     return index;
