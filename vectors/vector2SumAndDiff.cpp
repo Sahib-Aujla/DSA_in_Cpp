@@ -23,6 +23,8 @@ int main()
     }
 
 cout<<"evenSum  "<<evenSum<<"  oddSum "<<oddSum<<endl;
+cout<<"difference is  "<<+(evenSum-oddSum)<<endl;
+
 
 
     return 0;
