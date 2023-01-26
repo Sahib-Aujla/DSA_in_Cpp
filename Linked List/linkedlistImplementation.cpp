@@ -7,6 +7,10 @@ public:
     Node *next{};
 
     Node(int data) : data(data) {}
+    ~Node(){
+        delete next;
+        next=nullptr;
+    }
 };
 
 void insertAtHead(Node* & head, int data){
@@ -33,7 +37,7 @@ void insertAtPosition(Node*& tail,Node*&head,int position,int data){
     Node* temp=head;
     int cnt=1;
 
-    while(cnt<position-1){
+    while(cnt<position){
         temp=temp->next;
         cnt++;
     }
@@ -47,6 +51,36 @@ void insertAtPosition(Node*& tail,Node*&head,int position,int data){
     
     nodeToInsert->next=temp->next;
 temp->next=nodeToInsert;
+}
+
+void deleteNode(Node*& tail,Node*& head,int position){
+    if(position==1){
+        Node* temp=head->next;
+        head->next=nullptr;
+        delete head;
+        head=temp;
+
+    }else{
+
+    Node* curr=head;
+    Node* prev=nullptr;
+    int cnt=1;
+
+    while(cnt<position){
+        prev=curr;
+        curr=curr->next;
+        cnt++;
+    }
+    
+    
+    prev->next=curr->next;
+    curr->next=nullptr;
+    delete curr;
+    if(prev->next==nullptr){
+        tail=prev;
+    }
+
+    }
 }
 
 void print(Node* &head){
@@ -73,12 +107,16 @@ int main(){
     print(head);
     insertAtPosition(tail,head,3,21);
     print(head);
-    insertAtPosition(tail,head,6,24);
+    insertAtPosition(tail,head,5,24);
     print(head);
-    insertAtPosition(tail,head,7,25);
+    insertAtPosition(tail,head,6,25);
     print(head);
-insertAtHead(head,33);
+    insertAtHead(head,33);
     print(head);
+    deleteNode(tail,head,3);
+    print(head);
+ //deleteNode(head,1);
+  //  print(head);
 
     return 0;
 }
