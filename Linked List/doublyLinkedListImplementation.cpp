@@ -110,20 +110,18 @@ void deleteAtPosition(Node*&head, Node*&tail,int position){
         curr=curr->next;
         cnt++;
     }
-     if(curr->next==nullptr){
-        curr->prev=nullptr;
-    prev->next=curr->next;
-        tail=prev;
-    delete curr;
-
-    }else{
     curr->prev=nullptr;
     prev->next=curr->next;
-    curr->next->prev=curr->prev;
+     if(curr->next==nullptr){
+        
+        tail=prev;
+    
 
+    }else{
+    curr->next->prev=curr->prev;
      curr->next=nullptr;
-    delete curr;
     }
+    delete curr;
     }
     
 }
