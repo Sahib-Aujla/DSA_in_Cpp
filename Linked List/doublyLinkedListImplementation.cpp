@@ -44,21 +44,30 @@ void insertAtHead(Node*& head,int d){
     head=temp;
 
 }
+void insertAtTail(Node*& tail,int d){
+    Node* temp=new Node(d);
+    tail->next=temp;
+    temp->prev=tail;
+    tail=temp;
+
+}
 
 int main(){
     Node *node = new Node(10);
     Node *head=node;
+    Node *tail=node;
 cout<<"Length "<<getLength(head)<<endl;
 
     print(head);
     insertAtHead(head,55);
     print(head);
+    insertAtTail(tail,99);
+    print(head);
 
 
 
 
 
-    
 cout<<"Length "<<getLength(head)<<endl;
 
     return 0;
